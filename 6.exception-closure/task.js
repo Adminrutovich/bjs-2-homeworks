@@ -1,15 +1,15 @@
 ﻿function parseCount(value) {
-   if (Number.parseFloat(value) === NaN) {
+   if (isNaN(Number.parseFloat(value))) {
      throw new Error("Невалидное значение");
     }
-    return Number.parseFloat(value);
+    return parseFloat(value);
 }
 function validateCount(value) {
     try {
         return parseCount(value);
     } 
         catch (error) {
-        console.log(error);
+            return error;
         }
 
 }
@@ -29,7 +29,10 @@ class Triangle {
             return (this.sideA + this.sideB + this.sideC);
         }
         get area() {
-            return  Number(0.25 * Math.sqrt((this.sideA + this.sideB - this.sideC) * (this.sideA - this.sideB + this.sideC) * (this.sideC + this.sideB - this.sideA ) * (this.sideA + this.sideB + this.sideC))); 
+            return  Number((0.25 * Math.sqrt((this.sideA + this.sideB - this.sideC) 
+            * (this.sideA - this.sideB + this.sideC) 
+            * (this.sideC + this.sideB - this.sideA ) 
+            * (this.sideA + this.sideB + this.sideC))).toFixed(3)); 
         } 
 }
 
