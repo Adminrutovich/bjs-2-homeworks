@@ -16,13 +16,13 @@ class  AlarmClock {
         }
     }
     removeClock(time){
-        if (this.alarmCollection.find(time)) {
-            this.alarmCollection = this.alarmCollection.filter((alarmSignal) => alarmSignal.time !== time);
-        }
+        this.alarmCollection = this.alarmCollection.filter((alarmSignal) => alarmSignal.time !== time);
     }
     getCurrentFormattedTime(){
-        const today = new Date();
-        return (today.getHours() + ":" + today.getMinutes());
+        return new Date().toLocaleTimeString("ru-Ru", {
+            hour: "2-digit",
+            minute: "2-digit",
+          });
     }
     start() {
         if (this.intervalId !== null) {
